@@ -32,10 +32,7 @@ jobs:
     - name: Git Version
       id: gerador
       uses: codacy/git-version@2.7.1
-      with:
-        release-branch: prod
-        dev-branch: dev
-        prefix: qa
+      
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
       with:
