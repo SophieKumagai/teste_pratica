@@ -34,9 +34,7 @@ jobs:
       uses: codacy/git-version@2.4.0
       with:
         release-branch: qa
-        prefix: qa-
-        tag-prefix: 'qa-'
-        version-format: '{prefix}{version}'
+        prefix: 'qa-'
 
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
