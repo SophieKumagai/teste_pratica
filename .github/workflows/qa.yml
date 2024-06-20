@@ -1,38 +1,46 @@
 name: Java QA
- 
+
 on:
   pull_request:
     branches: [ "qa" ]
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK 19
       uses: actions/setup-java@v3
       with:
         java-version: '19'
         distribution: 'temurin'
+
     - name: Build with Java
       run: javac src/Main.java -d out
+
     - name: Run Java
       run: java -cp out Main
+
     - name: Mensagem de sucesso
       run: echo Deu Certo!
+
     - name: Ambiente
       run: echo Usando a Branch de QA
+
     - name: Git Version
       id: gerador
       uses: codacy/git-version@2.4.0
       with:
         release-branch: qa
         prefix: qa-
+
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
       with:
-        image: sophiekumagai/dockerfile
-        tags: ${{ github.run_number }}, ${{ steps.gerador.outputs.version }}
+        image: docker.io/sophiekumagai/dockerfile
+        tags: ${{ github.run_number }},${{ steps.gerador.outputs.version }}
         registry: docker.io
         dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
