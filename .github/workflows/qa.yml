@@ -33,14 +33,13 @@ jobs:
       id: gerador
       uses: codacy/git-version@2.4.0
       with:
-        release-branch: qa
         prefix: qa-
 
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
       with:
-        image: docker.io/sophiekumagai/dockerfile
-        tags: ${{ github.run_number }},${{ steps.gerador.outputs.version }}
+        image: sophiekumagai/dockerfile
+        tags: ${{ steps.gerador.outputs.version }}
         registry: docker.io
         dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
