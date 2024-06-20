@@ -41,6 +41,6 @@ jobs:
         image: sophiekumagai/pratica_teste
         tags: ${{ steps.gerador.outputs.version }}
         registry: docker.io
-        dockerfile: pratica_teste
+        dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
