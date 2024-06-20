@@ -36,6 +36,9 @@ jobs:
         release-branch: prod
         dev-branch: dev
         prefix: qa
+        
+    - name: versão
+      run: echo ${{ steps.gerador.outputs.version }}
 
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
