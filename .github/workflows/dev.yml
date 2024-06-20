@@ -1,0 +1,24 @@
+name: Java DEV
+ 
+on:
+  push:
+    branches: [ "dev" ]
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 19
+      uses: actions/setup-java@v3
+      with:
+        java-version: '19'
+        distribution: 'temurin'
+    - name: Build with Java
+      run: javac src/Main.java -d out
+    - name: Run Java
+      run: java -cp out Main
+    - name: Mensagem de sucesso
+      run: echo Deu Certo!
+    - name: Ambiente
+      run: echo Usando a Branch de DEV
