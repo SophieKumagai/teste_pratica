@@ -24,17 +24,11 @@ jobs:
       run: echo Deu Certo!
     - name: Ambiente
       run: echo Usando a Branch de PROD
-    - name: Git Version
-      id: gerador
-      uses: codacy/git-version@2.4.0
-      with:
-        release-branch: prod
-        prefix: prod-
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
       with:
         image: sophiekumagai/dockerfile
-        tags: ${{ steps.gerador.outputs.version }}
+        tags: PROD-${{github.run_number}}
         registry: docker.io
         dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
