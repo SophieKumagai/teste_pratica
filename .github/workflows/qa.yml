@@ -28,9 +28,6 @@ jobs:
 
     - name: Ambiente
       run: echo Usando a Branch de QA
-        
-    - name: versão
-      run: echo ${{ steps.gerador.outputs.version }}
 
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
