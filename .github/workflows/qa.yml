@@ -29,15 +29,11 @@ jobs:
     - name: Ambiente
       run: echo Usando a Branch de QA
 
-    - name: Git Version
-      id: gerador
-      uses: codacy/git-version@2.7.1
-      
     - name: Docker Build & Push Action
       uses: mr-smithers-excellent/docker-build-push@v6.4 
       with:
         image: sophiekumagai/pratica_teste
-        tags: "qa-${{ steps.gerador.outputs.version }}"
+        tags: QA-${{github.run_number}}
         registry: docker.io
         dockerfile: dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
